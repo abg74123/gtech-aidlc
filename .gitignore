@@ -34,6 +34,12 @@ yarn-error.log
 testem.log
 /typings
 
+# Environment variables
+.env
+
+# Docker volumes
+pgdata/
+
 # System Files
 .DS_Store
 Thumbs.db
@@ -42,3 +48,7 @@ Thumbs.db
 .nx/workspace-data
 .claude/worktrees
 .claude/settings.local.json
+
+.angular
+
+__screenshots__/

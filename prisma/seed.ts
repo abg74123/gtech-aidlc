@@ -1,0 +1,105 @@
+/**
+ * Prisma Seed Script — Autoflow Foundation
+ *
+ * Creates:
+ * - 1 Admin user (admin / Admin@123)
+ * - 1 test user per role (CASHIER, STORE, SUPERVISOR, MANAGER, CFO, ADMIN)
+ *
+ * Uses upsert pattern for idempotency — safe to run multiple times.
+ */
+
+import { PrismaClient, Role } from '@prisma/client';
+import * as bcrypt from 'bcrypt';
+
+const prisma = new PrismaClient();
+
+const DEFAULT_PASSWORD = 'admin123';
+const BCRYPT_ROUNDS = 10;
+
+interface SeedUser {
+  username: string;
+  email: string;
+  displayName: string;
+  roles: Role[];
+}
+
+const seedUsers: SeedUser[] = [
+  {
+    username: 'admin',
+    email: 'admin@autoflow.local',
+    displayName: 'System Administrator',
+    roles: [Role.ADMIN],
+  },
+  {
+    username: 'cashier01',
+    email: 'cashier01@autoflow.local',
+    displayName: 'Test Cashier',
+    roles: [Role.CASHIER],
+  },
+  {
+    username: 'store01',
+    email: 'store01@autoflow.local',
+    displayName: 'Test Store Staff',
+    roles: [Role.STORE],
+  },
+  {
+    username: 'supervisor01',
+    email: 'supervisor01@autoflow.local',
+    displayName: 'Test Supervisor',
+    roles: [Role.SUPERVISOR],
+  },
+  {
+    username: 'manager01',
+    email: 'manager01@autoflow.local',
+    displayName: 'Test Manager',
+    roles: [Role.MANAGER],
+  },
+  {
+    username: 'cfo01',
+    email: 'cfo01@autoflow.local',
+    displayName: 'Test CFO',
+    roles: [Role.CFO],
+  },
+];
+
+async function main(): Promise<void> {
+  console.log('🌱 Seeding Autoflow database...\n');
+
+  const passwordHash = await bcrypt.hash(DEFAULT_PASSWORD, BCRYPT_ROUNDS);
+
+  for (const user of seedUsers) {
+    const result = await prisma.user.upsert({
+      where: { username: user.username },
+      update: {
+        email: user.email,
+        displayName: user.displayName,
+        roles: user.roles,
+        isActive: true,
+      },
+      create: {
+        username: user.username,
+        email: user.email,
+        passwordHash,
+        displayName: user.displayName,
+        roles: user.roles,
+        isActive: true,
+      },
+    });
+
+    console.log(
+      `  ✓ ${result.username} (${result.roles.join(', ')}) — ${result.id}`
+    );
+  }
+
+  console.log(`\n✅ Seeded ${seedUsers.length} users successfully.`);
+  console.log(`   Default password: ${DEFAULT_PASSWORD}`);
+}
+
+main()
+  .catch((e) => {
+    console.error('❌ Seed failed:', e);
+    process.exit(1);
+  })
+  .finally(async () => {
+    await prisma.$disconnect();
+  });

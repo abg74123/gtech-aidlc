@@ -1,0 +1,41 @@
+<div class="dashboard">
+  <!-- Welcome Section -->
+  <section class="welcome-section" aria-label="Welcome">
+    <h2 class="welcome-title">
+      Welcome, {{ user()?.displayName ?? 'User' }}
+    </h2>
+    <p class="welcome-subtitle">
+      Here's an overview of your Autoflow workspace.
+    </p>
+  </section>
+
+  <!-- Quick Stats -->
+  <section class="stats-section" aria-label="Quick statistics">
+    <div class="stats-grid">
+      @for (stat of stats; track stat.title) {
+        <div class="stat-card">
+          <div class="stat-icon">{{ stat.icon }}</div>
+          <div class="stat-content">
+            <span class="stat-value">{{ stat.value }}</span>
+            <span class="stat-title">{{ stat.title }}</span>
+            <span class="stat-description">{{ stat.description }}</span>
+          </div>
+        </div>
+      }
+    </div>
+  </section>
+
+  <!-- Role-Based Quick Links -->
+  <section class="role-section" aria-label="Your modules">
+    <h3 class="section-title">Available Modules</h3>
+    <div class="role-grid">
+      @for (section of visibleSections(); track section.title) {
+        <div class="role-card">
+          <div class="role-card-icon">{{ section.icon }}</div>
+          <h4 class="role-card-title">{{ section.title }}</h4>
+          <p class="role-card-description">{{ section.description }}</p>
+        </div>
+      }
+    </div>
+  </section>
+</div>

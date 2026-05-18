@@ -1,0 +1,18 @@
+{
+  "name": "shared-errors",
+  "sourceRoot": "libs/shared-errors/src",
+  "projectType": "library",
+  "tags": ["scope:shared", "type:util"],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/shared-errors",
+        "tsConfig": "libs/shared-errors/tsconfig.lib.json",
+        "main": "libs/shared-errors/src/index.ts",
+        "assets": []
+      }
+    }
+  }
+}

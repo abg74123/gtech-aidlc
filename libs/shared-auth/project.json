@@ -1,0 +1,19 @@
+{
+  "name": "shared-auth",
+  "sourceRoot": "libs/shared-auth/src",
+  "projectType": "library",
+  "tags": ["scope:shared", "type:auth"],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/shared-auth",
+        "tsConfig": "libs/shared-auth/tsconfig.lib.json",
+        "main": "libs/shared-auth/src/index.ts",
+        "assets": [],
+        "rootDir": "."
+      }
+    }
+  }
+}

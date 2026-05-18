@@ -1,0 +1,18 @@
+{
+  "name": "shared-utils",
+  "sourceRoot": "libs/shared-utils/src",
+  "projectType": "library",
+  "tags": ["scope:shared", "type:util"],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/shared-utils",
+        "tsConfig": "libs/shared-utils/tsconfig.lib.json",
+        "main": "libs/shared-utils/src/index.ts",
+        "assets": []
+      }
+    }
+  }
+}

@@ -1,0 +1,47 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_DB: autoflow_test
+          POSTGRES_USER: autoflow
+          POSTGRES_PASSWORD: autoflow_secret
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd="pg_isready -U autoflow"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+
+    env:
+      DATABASE_URL: postgresql://autoflow:autoflow_secret@localhost:5432/autoflow_test?schema=public
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      - uses: nrwl/nx-set-shas@v4
+
+      - run: npx nx affected --target=lint
+      - run: npx nx affected --target=test
+      - run: npx nx affected --target=build
