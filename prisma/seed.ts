@@ -8,13 +8,14 @@
  * Uses upsert pattern for idempotency — safe to run multiple times.
  */
 
+import 'dotenv/config';
 import { PrismaClient, Role } from '@prisma/client';
 import { PrismaPg } from '@prisma/adapter-pg';
 import * as bcrypt from 'bcrypt';
 
 const connectionString =
   process.env['DATABASE_URL'] ??
-  'postgresql://autoflow:autoflow_secret@localhost:5432/autoflow?schema=public';
+  'postgresql://autoflow:autoflow_secret@localhost:6432/autoflow?schema=public';
 
 const adapter = new PrismaPg({ connectionString });
 const prisma = new PrismaClient({ adapter });
