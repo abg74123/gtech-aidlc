@@ -118,17 +118,34 @@ units:
         estimates: "T-shirt sizes"
   - name: "warehouse"
     displayName: "คลังสินค้า (Warehouse Operations)"
-    status: "not-started"
-    phase: null
+    status: "in-progress"
+    phase: "design"
     completedPhases: []
     implementationMode: null
     implementation:
-      totalTasks: 0
+      totalTasks: 22
       completedTasks: 0
       currentTask: null
       currentWave: null
-    artifacts: {}
-    decisions: {}
+    artifacts:
+      design:
+        status: "approved"
+        timestamp: "2026-05-19T10:00:00Z"
+        files: [design.md]
+      tasks:
+        status: "draft"
+        timestamp: "2026-05-19T10:10:00Z"
+        files: [tasks.md]
+    decisions:
+      design:
+        freeze-mechanism: "Database flag per item+warehouse (is_frozen column)"
+        transfer-pattern: "Single TX with ADJ_TRANSFER — atomic"
+        approval-config: "Unlimited threshold — no role-based differentiation"
+        evidence-storage: "Local file storage (uploads directory)"
+        mock-strategy: "Interface + Mock implementation with JSON fixtures"
+        count-lifecycle: "INITIATED → COUNTING → PENDING_APPROVAL → APPROVED → COMPLETED"
+        ui-library: "Angular Material"
+        pbt: "Yes — 9 correctness properties with fast-check"
   - name: "reports"
     displayName: "รายงาน (Reports & Error Alerts)"
     status: "not-started"

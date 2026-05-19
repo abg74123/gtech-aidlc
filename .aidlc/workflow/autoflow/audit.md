@@ -125,3 +125,30 @@
 **Action**: generation
 **Artifacts**: autoflow-transactions/tasks.md
 **Outcome**: 24 tasks across 6 phases, 3 execution waves (Wave 2 has 3 parallel phases: Sales, Purchasing, AP/AR). Coverage: 5 components, 6 entities, 19 endpoints, 6 integrations, 8 PBT properties. All 16 stories covered.
+### [2026-05-19T10:00:00Z] Design (Warehouse): Decision Gate
+
+**Phase**: design
+**Action**: decision-gate
+**Artifacts**: autoflow-warehouse/decisions-design.md
+**Outcome**: 8 decisions — DB flag freeze, single TX transfer, unlimited approval threshold, local file storage, interface+mock strategy, 5-state count lifecycle, Angular Material, PBT with 9 properties
+
+### [2026-05-19T10:05:00Z] Design (Warehouse): Generation
+
+**Phase**: design
+**Action**: generation
+**Artifacts**: autoflow-warehouse/design.md
+**Outcome**: Warehouse unit design — 5 components (StockCountService, StockTransferService, WriteOffService, WarehouseController, WarehouseUIModule), 6 entities, 14 endpoints, 9 PBT properties, compact format, self-contained with mock services
+
+### [2026-05-19T10:10:00Z] Tasks (Warehouse): Decision Gate
+
+**Phase**: tasks
+**Action**: decision-gate
+**Artifacts**: autoflow-warehouse/decisions-tasks.md
+**Outcome**: 6 decisions — vertical slice strategy, test-after, mock+data first priority, full test pyramid (unit+integration+PBT), standard granularity (1-2d), frontend after backend
+
+### [2026-05-19T10:15:00Z] Tasks (Warehouse): Generation
+
+**Phase**: tasks
+**Action**: generation
+**Artifacts**: autoflow-warehouse/tasks.md
+**Outcome**: 22 tasks across 6 phases, 4 execution waves (Wave 2 parallel: Stock Count + Transfer + Write-off). Coverage: 5 components, 6 entities, 14 endpoints, 9 PBT properties. Vertical slice strategy with shared foundation first.
