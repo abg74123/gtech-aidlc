@@ -1,0 +1,7 @@
+{
+  "name": "master-data-data-access",
+  "sourceRoot": "libs/master-data/data-access/src",
+  "projectType": "library",
+  "tags": ["scope:master-data", "type:data-access"],
+  "targets": {}
+}

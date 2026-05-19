@@ -23,6 +23,9 @@ export const ErrorCodes = {
 
   /** User does not have the required role for this operation */
   INSUFFICIENT_ROLE: 'INSUFFICIENT_ROLE',
+
+  /** Stock is frozen during stock count — no movements allowed */
+  STOCK_FROZEN: 'STOCK_FROZEN',
 } as const;
 
 export type ErrorCode = (typeof ErrorCodes)[keyof typeof ErrorCodes];

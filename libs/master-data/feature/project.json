@@ -1,0 +1,7 @@
+{
+  "name": "master-data-feature",
+  "sourceRoot": "libs/master-data/feature/src",
+  "projectType": "library",
+  "tags": ["scope:master-data", "type:feature"],
+  "targets": {}
+}
