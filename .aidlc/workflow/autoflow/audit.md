@@ -90,3 +90,31 @@
 **Action**: generation
 **Artifacts**: autoflow-foundation/tasks.md, autoflow-foundation/decisions-tasks.md
 **Outcome**: 18 tasks across 8 phases, 4 execution waves (3 parallel waves). Component-first strategy, bottom-up. Coverage: 7 components, 3 entities, 4 endpoints. All design elements covered.
+
+### [2026-05-19T10:00:00Z] Design (Warehouse): Decision Gate
+
+**Phase**: design
+**Action**: decision-gate
+**Artifacts**: autoflow-warehouse/decisions-design.md
+**Outcome**: 8 decisions — DB flag freeze, single TX transfer, unlimited approval threshold, local file storage, interface+mock strategy, 5-state count lifecycle, Angular Material, PBT with 9 properties
+
+### [2026-05-19T10:05:00Z] Design (Warehouse): Generation
+
+**Phase**: design
+**Action**: generation
+**Artifacts**: autoflow-warehouse/design.md
+**Outcome**: Warehouse unit design — 5 components (StockCountService, StockTransferService, WriteOffService, WarehouseController, WarehouseUIModule), 6 entities, 14 endpoints, 9 PBT properties, compact format, self-contained with mock services
+
+### [2026-05-19T10:10:00Z] Tasks (Warehouse): Decision Gate
+
+**Phase**: tasks
+**Action**: decision-gate
+**Artifacts**: autoflow-warehouse/decisions-tasks.md
+**Outcome**: 6 decisions — vertical slice strategy, test-after, mock+data first priority, full test pyramid (unit+integration+PBT), standard granularity (1-2d), frontend after backend
+
+### [2026-05-19T10:15:00Z] Tasks (Warehouse): Generation
+
+**Phase**: tasks
+**Action**: generation
+**Artifacts**: autoflow-warehouse/tasks.md
+**Outcome**: 22 tasks across 6 phases, 4 execution waves (Wave 2 parallel: Stock Count + Transfer + Write-off). Coverage: 5 components, 6 entities, 14 endpoints, 9 PBT properties. Vertical slice strategy with shared foundation first.
