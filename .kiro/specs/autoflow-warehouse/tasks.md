@@ -122,38 +122,38 @@ Tasks organized by vertical slices — each feature (Stock Count, Transfer, Writ
     - Integration tests: full API flow via Supertest including file upload
     - PBT: P8 (write-off requires evidence — no approved write-off without at least 1 evidence)
 
-- [ ] 5. Warehouse Module Integration
-  - [ ] 5.1 Wire WarehouseModule and register in API app
+- [x] 5. Warehouse Module Integration
+  - [x] 5.1 Wire WarehouseModule and register in API app
     - **Deps**: 2.4, 3.2, 4.2 | **Ref**: `design.md` — Architecture
     - Create `WarehouseModule` importing all services, repositories, mock services
     - Register in `apps/api/src/app.module.ts`
     - Configure DI tokens for mock services (replaceable with real services later)
     - Add OpenAPI tags and module-level documentation
-  - [ ] 5.2 Integration test — full warehouse module
+  - [x] 5.2 Integration test — full warehouse module
     - **Deps**: 5.1 | **Ref**: `design.md` — all endpoints
     - End-to-end integration test: count session → transfer → write-off in sequence
     - Verify mock services track state correctly across operations
     - Verify freeze blocks transfer during active count
 
-- [ ] 6. Angular Frontend — Warehouse UI
-  - [ ] 6.1 Scaffold Angular warehouse module and routing
+- [x] 6. Angular Frontend — Warehouse UI
+  - [x] 6.1 Scaffold Angular warehouse module and routing
     - **Deps**: 5.1 | **Ref**: `design.md` — Components/WarehouseUIModule
     - Generate `libs/warehouse/ui` Angular module with lazy-loaded routing
     - Configure routes: `/warehouse/count`, `/warehouse/transfers`, `/warehouse/write-offs`
     - Create `WarehouseApiService` HTTP client service
     - Add Angular Material module imports
-  - [ ] 6.2 Implement Stock Count UI pages
+  - [x] 6.2 Implement Stock Count UI pages
     - **Deps**: 6.1 | **Ref**: `design.md` — Components/WarehouseUIModule
     - Count Session List page — table with status filter, pagination
     - Count Session Create page — warehouse picker, item multi-select
     - Count Session Detail page — line-by-line count entry, difference display, submit/approve buttons
     - Use Angular Material: mat-table, mat-select, mat-stepper, mat-button
-  - [ ] 6.3 Implement Transfer UI pages
+  - [x] 6.3 Implement Transfer UI pages
     - **Deps**: 6.1 | **Ref**: `design.md` — Components/WarehouseUIModule
     - Transfer List page — table with source/dest filter
     - Transfer Create page — source/dest warehouse pickers, item+qty lines, submit
     - Use Angular Material: mat-table, mat-select, mat-form-field
-  - [ ] 6.4 Implement Write-off UI pages
+  - [x] 6.4 Implement Write-off UI pages
     - **Deps**: 6.1 | **Ref**: `design.md` — Components/WarehouseUIModule
     - Write-off List page — table with status filter
     - Write-off Create page — warehouse/item picker, qty, reason, file upload
@@ -214,12 +214,12 @@ Tasks organized by vertical slices — each feature (Stock Count, Transfer, Writ
 
 ## Definition of Done
 
-- [ ] Code written and follows NestJS/Angular conventions
-- [ ] Unit tests passing (Jest)
-- [ ] Integration tests passing (Supertest)
-- [ ] PBT properties verified (fast-check)
-- [ ] OpenAPI documentation generated
-- [ ] Code linted (ESLint + Prettier)
+- [x] Code written and follows NestJS/Angular conventions
+- [x] Unit tests passing (Jest)
+- [x] Integration tests passing (Supertest)
+- [x] PBT properties verified (fast-check)
+- [x] OpenAPI documentation generated
+- [x] Code linted (ESLint + Prettier)
 
 ---
 

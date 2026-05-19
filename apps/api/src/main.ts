@@ -45,6 +45,9 @@ async function bootstrap() {
       },
       'bearer',
     )
+    .addTag('warehouse / stock-count', 'Stock count session lifecycle — freeze, count, approve, and POST adjustments (ADJ_COUNT_UP/DOWN)')
+    .addTag('warehouse / stock-transfer', 'Atomic inter-warehouse stock transfers — POST ADJ_TRANSFER')
+    .addTag('warehouse / write-off', 'Stock write-off requests with evidence upload and CFO approval — POST ADJ_WRITEOFF')
     .build();
 
   const document = SwaggerModule.createDocument(app, swaggerConfig);
