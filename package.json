@@ -12,7 +12,9 @@
     "format": "nx format:write",
     "format:check": "nx format:check",
     "db:migrate": "prisma migrate dev",
-    "db:seed": "prisma db seed"
+    "db:seed": "prisma db seed",
+    "db:setup": "sh scripts/db-setup.sh",
+    "db:reset": "docker compose down -v && sh scripts/db-setup.sh"
   },
   "prisma": {
     "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
