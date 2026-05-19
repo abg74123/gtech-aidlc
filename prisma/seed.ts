@@ -9,9 +9,15 @@
  */
 
 import { PrismaClient, Role } from '@prisma/client';
+import { PrismaPg } from '@prisma/adapter-pg';
 import * as bcrypt from 'bcrypt';
 
-const prisma = new PrismaClient();
+const connectionString =
+  process.env['DATABASE_URL'] ??
+  'postgresql://autoflow:autoflow_secret@localhost:5432/autoflow?schema=public';
+
+const adapter = new PrismaPg({ connectionString });
+const prisma = new PrismaClient({ adapter });
 
 const DEFAULT_PASSWORD = 'admin123';
 const BCRYPT_ROUNDS = 10;
