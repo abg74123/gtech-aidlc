@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "postinstall": "prisma generate",
+    "postinstall": "prisma generate && nx reset",
     "start:api": "nx serve api",
     "start:web": "nx serve web",
     "build": "nx run-many --target=build --all",

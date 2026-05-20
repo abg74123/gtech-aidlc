@@ -1,6 +1,236 @@
 {
   "graph": {
     "nodes": {
+      "warehouse-data-access": {
+        "name": "warehouse-data-access",
+        "type": "lib",
+        "data": {
+          "root": "libs/warehouse/data-access",
+          "targets": {
+            "lint": {
+              "cache": true,
+              "options": {
+                "cwd": "libs/warehouse/data-access",
+                "command": "eslint ."
+              },
+              "inputs": [
+                "default",
+                "{workspaceRoot}/eslint.config.js"
+              ],
+              "outputs": [
+                "{options.outputFile}"
+              ],
+              "metadata": {
+                "technologies": [
+                  "eslint"
+                ],
+                "description": "Runs ESLint on project",
+                "help": {
+                  "command": "npx eslint --help",
+                  "example": {
+                    "options": {
+                      "max-warnings": 0
+                    }
+                  }
+                }
+              },
+              "executor": "nx:run-commands",
+              "configurations": {},
+              "parallelism": true
+            },
+            "test": {
+              "options": {
+                "cwd": "libs/warehouse/data-access",
+                "env": {
+                  "TS_NODE_COMPILER_OPTIONS": "{\"moduleResolution\":\"node10\",\"module\":\"commonjs\",\"customConditions\":null}"
+                },
+                "command": "jest"
+              },
+              "metadata": {
+                "technologies": [
+                  "jest"
+                ],
+                "description": "Run Jest Tests",
+                "help": {
+                  "command": "npx jest --help",
+                  "example": {
+                    "options": {
+                      "coverage": true
+                    }
+                  }
+                }
+              },
+              "cache": true,
+              "inputs": [
+                "default",
+                "^production",
+                "{workspaceRoot}/jest.preset.js"
+              ],
+              "outputs": [
+                "{workspaceRoot}/coverage/libs/warehouse/data-access"
+              ],
+              "executor": "nx:run-commands",
+              "configurations": {},
+              "parallelism": true
+            },
+            "build": {
+              "executor": "@nx/js:tsc",
+              "outputs": [
+                "{options.outputPath}"
+              ],
+              "options": {
+                "outputPath": "dist/libs/warehouse/data-access",
+                "tsConfig": "libs/warehouse/data-access/tsconfig.lib.json",
+                "main": "libs/warehouse/data-access/src/index.ts",
+                "assets": []
+              },
+              "configurations": {},
+              "parallelism": true,
+              "dependsOn": [
+                "^build"
+              ],
+              "inputs": [
+                "production",
+                "^production"
+              ],
+              "cache": true
+            }
+          },
+          "name": "warehouse-data-access",
+          "tags": [
+            "npm:private",
+            "scope:warehouse",
+            "type:data-access"
+          ],
+          "metadata": {
+            "targetGroups": {},
+            "js": {
+              "packageName": "@autoflow/warehouse-data-access",
+              "packageVersion": "0.0.1",
+              "packageMain": "src/index.js",
+              "isInPackageManagerWorkspaces": false
+            }
+          },
+          "sourceRoot": "libs/warehouse/data-access/src",
+          "projectType": "library",
+          "implicitDependencies": []
+        }
+      },
+      "warehouse-feature": {
+        "name": "warehouse-feature",
+        "type": "lib",
+        "data": {
+          "root": "libs/warehouse/feature",
+          "targets": {
+            "lint": {
+              "cache": true,
+              "options": {
+                "cwd": "libs/warehouse/feature",
+                "command": "eslint ."
+              },
+              "inputs": [
+                "default",
+                "{workspaceRoot}/eslint.config.js"
+              ],
+              "outputs": [
+                "{options.outputFile}"
+              ],
+              "metadata": {
+                "technologies": [
+                  "eslint"
+                ],
+                "description": "Runs ESLint on project",
+                "help": {
+                  "command": "npx eslint --help",
+                  "example": {
+                    "options": {
+                      "max-warnings": 0
+                    }
+                  }
+                }
+              },
+              "executor": "nx:run-commands",
+              "configurations": {},
+              "parallelism": true
+            },
+            "test": {
+              "options": {
+                "cwd": "libs/warehouse/feature",
+                "env": {
+                  "TS_NODE_COMPILER_OPTIONS": "{\"moduleResolution\":\"node10\",\"module\":\"commonjs\",\"customConditions\":null}"
+                },
+                "command": "jest"
+              },
+              "metadata": {
+                "technologies": [
+                  "jest"
+                ],
+                "description": "Run Jest Tests",
+                "help": {
+                  "command": "npx jest --help",
+                  "example": {
+                    "options": {
+                      "coverage": true
+                    }
+                  }
+                }
+              },
+              "cache": true,
+              "inputs": [
+                "default",
+                "^production",
+                "{workspaceRoot}/jest.preset.js"
+              ],
+              "outputs": [
+                "{workspaceRoot}/coverage/libs/warehouse/feature"
+              ],
+              "executor": "nx:run-commands",
+              "configurations": {},
+              "parallelism": true
+            },
+            "build": {
+              "executor": "@nx/js:tsc",
+              "outputs": [
+                "{options.outputPath}"
+              ],
+              "options": {
+                "outputPath": "dist/libs/warehouse/feature",
+                "tsConfig": "libs/warehouse/feature/tsconfig.lib.json",
+                "main": "libs/warehouse/feature/src/index.ts",
+                "assets": []
+              },
+              "configurations": {},
+              "parallelism": true,
+              "dependsOn": [
+                "^build"
+              ],
+              "inputs": [
+                "production",
+                "^production"
+              ],
+              "cache": true
+            }
+          },
+          "name": "warehouse-feature",
+          "tags": [
+            "npm:private",
+            "scope:warehouse",
+            "type:feature"
+          ],
+          "metadata": {
+            "targetGroups": {},
+            "js": {
+              "packageName": "@autoflow/warehouse-feature",
+              "packageVersion": "0.0.1",
+              "packageMain": "src/index.js",
+              "isInPackageManagerWorkspaces": false
+            }
+          },
+          "sourceRoot": "libs/warehouse/feature/src",
+          "projectType": "library",
+          "implicitDependencies": []
+        }
+      },
       "shared-errors": {
         "name": "shared-errors",
         "type": "lib",
@@ -97,12 +327,22 @@
             }
           },
           "name": "shared-errors",
-          "sourceRoot": "libs/shared-errors/src",
-          "projectType": "library",
           "tags": [
+            "npm:private",
             "scope:shared",
             "type:util"
           ],
+          "metadata": {
+            "targetGroups": {},
+            "js": {
+              "packageName": "@autoflow/shared-errors",
+              "packageVersion": "0.0.1",
+              "packageMain": "src/index.js",
+              "isInPackageManagerWorkspaces": false
+            }
+          },
+          "sourceRoot": "libs/shared-errors/src",
+          "projectType": "library",
           "implicitDependencies": []
         }
       },
@@ -202,12 +442,22 @@
             }
           },
           "name": "shared-prisma",
-          "sourceRoot": "libs/shared-prisma/src",
-          "projectType": "library",
           "tags": [
+            "npm:private",
             "scope:shared",
             "type:data-access"
           ],
+          "metadata": {
+            "targetGroups": {},
+            "js": {
+              "packageName": "@autoflow/shared-prisma",
+              "packageVersion": "0.0.1",
+              "packageMain": "src/index.js",
+              "isInPackageManagerWorkspaces": false
+            }
+          },
+          "sourceRoot": "libs/shared-prisma/src",
+          "projectType": "library",
           "implicitDependencies": []
         }
       },
@@ -307,12 +557,22 @@
             }
           },
           "name": "shared-types",
-          "sourceRoot": "libs/shared-types/src",
-          "projectType": "library",
           "tags": [
+            "npm:private",
             "scope:shared",
             "type:types"
           ],
+          "metadata": {
+            "targetGroups": {},
+            "js": {
+              "packageName": "@autoflow/shared-types",
+              "packageVersion": "0.0.1",
+              "packageMain": "src/index.js",
+              "isInPackageManagerWorkspaces": false
+            }
+          },
+          "sourceRoot": "libs/shared-types/src",
+          "projectType": "library",
           "implicitDependencies": []
         }
       },
@@ -412,12 +672,138 @@
             }
           },
           "name": "shared-utils",
-          "sourceRoot": "libs/shared-utils/src",
-          "projectType": "library",
           "tags": [
+            "npm:private",
             "scope:shared",
             "type:util"
           ],
+          "metadata": {
+            "targetGroups": {},
+            "js": {
+              "packageName": "@autoflow/shared-utils",
+              "packageVersion": "0.0.1",
+              "packageMain": "src/index.js",
+              "isInPackageManagerWorkspaces": false
+            }
+          },
+          "sourceRoot": "libs/shared-utils/src",
+          "projectType": "library",
+          "implicitDependencies": []
+        }
+      },
+      "warehouse-ui": {
+        "name": "warehouse-ui",
+        "type": "lib",
+        "data": {
+          "root": "libs/warehouse/ui",
+          "targets": {
+            "lint": {
+              "cache": true,
+              "options": {
+                "cwd": "libs/warehouse/ui",
+                "command": "eslint ."
+              },
+              "inputs": [
+                "default",
+                "{workspaceRoot}/eslint.config.js"
+              ],
+              "outputs": [
+                "{options.outputFile}"
+              ],
+              "metadata": {
+                "technologies": [
+                  "eslint"
+                ],
+                "description": "Runs ESLint on project",
+                "help": {
+                  "command": "npx eslint --help",
+                  "example": {
+                    "options": {
+                      "max-warnings": 0
+                    }
+                  }
+                }
+              },
+              "executor": "nx:run-commands",
+              "configurations": {},
+              "parallelism": true
+            },
+            "test": {
+              "options": {
+                "cwd": "libs/warehouse/ui",
+                "env": {
+                  "TS_NODE_COMPILER_OPTIONS": "{\"moduleResolution\":\"node10\",\"module\":\"commonjs\",\"customConditions\":null}"
+                },
+                "command": "jest"
+              },
+              "metadata": {
+                "technologies": [
+                  "jest"
+                ],
+                "description": "Run Jest Tests",
+                "help": {
+                  "command": "npx jest --help",
+                  "example": {
+                    "options": {
+                      "coverage": true
+                    }
+                  }
+                }
+              },
+              "cache": true,
+              "inputs": [
+                "default",
+                "^production",
+                "{workspaceRoot}/jest.preset.js"
+              ],
+              "outputs": [
+                "{workspaceRoot}/coverage/libs/warehouse/ui"
+              ],
+              "executor": "nx:run-commands",
+              "configurations": {},
+              "parallelism": true
+            },
+            "build": {
+              "executor": "@nx/js:tsc",
+              "outputs": [
+                "{options.outputPath}"
+              ],
+              "options": {
+                "outputPath": "dist/libs/warehouse/ui",
+                "tsConfig": "libs/warehouse/ui/tsconfig.lib.json",
+                "main": "libs/warehouse/ui/src/index.ts",
+                "assets": []
+              },
+              "configurations": {},
+              "parallelism": true,
+              "dependsOn": [
+                "^build"
+              ],
+              "inputs": [
+                "production",
+                "^production"
+              ],
+              "cache": true
+            }
+          },
+          "name": "warehouse-ui",
+          "tags": [
+            "npm:private",
+            "scope:warehouse",
+            "type:ui"
+          ],
+          "metadata": {
+            "targetGroups": {},
+            "js": {
+              "packageName": "@autoflow/warehouse-ui",
+              "packageVersion": "0.0.1",
+              "packageMain": "src/index.js",
+              "isInPackageManagerWorkspaces": false
+            }
+          },
+          "sourceRoot": "libs/warehouse/ui/src",
+          "projectType": "library",
+          "prefix": "warehouse",
           "implicitDependencies": []
         }
       },
@@ -502,8 +888,7 @@
                 "outputPath": "dist/libs/shared-auth",
                 "tsConfig": "libs/shared-auth/tsconfig.lib.json",
                 "main": "libs/shared-auth/src/index.ts",
-                "assets": [],
-                "rootDir": "."
+                "assets": []
               },
               "configurations": {},
               "parallelism": true,
@@ -518,12 +903,22 @@
             }
           },
           "name": "shared-auth",
-          "sourceRoot": "libs/shared-auth/src",
-          "projectType": "library",
           "tags": [
+            "npm:private",
             "scope:shared",
             "type:auth"
           ],
+          "metadata": {
+            "targetGroups": {},
+            "js": {
+              "packageName": "@autoflow/shared-auth",
+              "packageVersion": "0.0.1",
+              "packageMain": "src/index.js",
+              "isInPackageManagerWorkspaces": false
+            }
+          },
+          "sourceRoot": "libs/shared-auth/src",
+          "projectType": "library",
           "implicitDependencies": []
         }
       },
@@ -604,7 +999,8 @@
               ],
               "outputs": [
                 "{workspaceRoot}/dist/.playwright/apps/web-e2e/test-output",
-                "{workspaceRoot}/dist/.playwright/apps/web-e2e/playwright-report"
+                "{workspaceRoot}/dist/.playwright/apps/web-e2e/playwright-report",
+                "{workspaceRoot}/dist/.playwright/apps/web-e2e/blob-report"
               ],
               "executor": "nx:run-commands",
               "configurations": {},
@@ -615,7 +1011,8 @@
                 "cwd": "apps/web-e2e",
                 "env": {
                   "PLAYWRIGHT_HTML_OUTPUT_DIR": "../../dist/.playwright/apps/web-e2e/playwright-report/src-example-spec-ts",
-                  "PLAYWRIGHT_HTML_REPORT": "../../dist/.playwright/apps/web-e2e/playwright-report/src-example-spec-ts"
+                  "PLAYWRIGHT_HTML_REPORT": "../../dist/.playwright/apps/web-e2e/playwright-report/src-example-spec-ts",
+                  "PLAYWRIGHT_BLOB_OUTPUT_FILE": "../../dist/.playwright/apps/web-e2e/blob-report/src-example-spec-ts.zip"
                 },
                 "command": "playwright test src/example.spec.ts --output=../../dist/.playwright/apps/web-e2e/test-output/src-example-spec-ts"
               },
@@ -654,7 +1051,8 @@
               ],
               "outputs": [
                 "{workspaceRoot}/dist/.playwright/apps/web-e2e/test-output/src-example-spec-ts",
-                "{workspaceRoot}/dist/.playwright/apps/web-e2e/playwright-report/src-example-spec-ts"
+                "{workspaceRoot}/dist/.playwright/apps/web-e2e/playwright-report/src-example-spec-ts",
+                "{workspaceRoot}/dist/.playwright/apps/web-e2e/blob-report/src-example-spec-ts.zip"
               ],
               "executor": "nx:run-commands",
               "configurations": {},
@@ -675,7 +1073,8 @@
               ],
               "outputs": [
                 "{workspaceRoot}/dist/.playwright/apps/web-e2e/test-output",
-                "{workspaceRoot}/dist/.playwright/apps/web-e2e/playwright-report"
+                "{workspaceRoot}/dist/.playwright/apps/web-e2e/playwright-report",
+                "{workspaceRoot}/dist/.playwright/apps/web-e2e/blob-report"
               ],
               "dependsOn": [
                 {
@@ -838,7 +1237,8 @@
             "serve": {
               "executor": "@nx/js:node",
               "options": {
-                "buildTarget": "api:build"
+                "buildTarget": "api:build",
+                "watch": true
               },
               "configurations": {
                 "production": {
@@ -856,7 +1256,13 @@
             "type:app",
             "scope:api"
           ],
-          "implicitDependencies": []
+          "implicitDependencies": [
+            "shared-types",
+            "shared-prisma",
+            "shared-auth",
+            "shared-errors",
+            "warehouse-feature"
+          ]
         }
       },
       "web": {
@@ -1006,10 +1412,35 @@
       }
     },
     "dependencies": {
+      "warehouse-data-access": [
+        {
+          "source": "warehouse-data-access",
+          "target": "shared-prisma",
+          "type": "static"
+        }
+      ],
+      "warehouse-feature": [
+        {
+          "source": "warehouse-feature",
+          "target": "warehouse-data-access",
+          "type": "static"
+        },
+        {
+          "source": "warehouse-feature",
+          "target": "shared-types",
+          "type": "static"
+        },
+        {
+          "source": "warehouse-feature",
+          "target": "shared-auth",
+          "type": "static"
+        }
+      ],
       "shared-errors": [],
       "shared-prisma": [],
       "shared-types": [],
       "shared-utils": [],
+      "warehouse-ui": [],
       "shared-auth": [
         {
           "source": "shared-auth",
@@ -1032,12 +1463,42 @@
       "api": [
         {
           "source": "api",
+          "target": "shared-types",
+          "type": "implicit"
+        },
+        {
+          "source": "api",
+          "target": "shared-prisma",
+          "type": "implicit"
+        },
+        {
+          "source": "api",
+          "target": "shared-auth",
+          "type": "implicit"
+        },
+        {
+          "source": "api",
+          "target": "shared-errors",
+          "type": "implicit"
+        },
+        {
+          "source": "api",
+          "target": "warehouse-feature",
+          "type": "implicit"
+        },
+        {
+          "source": "api",
           "target": "shared-prisma",
           "type": "static"
         },
         {
           "source": "api",
           "target": "shared-auth",
+          "type": "static"
+        },
+        {
+          "source": "api",
+          "target": "warehouse-feature",
           "type": "static"
         },
         {
@@ -1051,7 +1512,13 @@
           "type": "static"
         }
       ],
-      "web": []
+      "web": [
+        {
+          "source": "web",
+          "target": "warehouse-ui",
+          "type": "static"
+        }
+      ]
     }
   }
 }

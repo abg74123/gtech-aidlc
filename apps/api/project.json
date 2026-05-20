@@ -3,6 +3,13 @@
   "projectType": "application",
   "sourceRoot": "apps/api/src",
   "tags": ["type:app", "scope:api"],
+  "implicitDependencies": [
+    "shared-types",
+    "shared-prisma",
+    "shared-auth",
+    "shared-errors",
+    "warehouse-feature"
+  ],
   "targets": {
     "build": {
       "executor": "@nx/js:tsc",
@@ -23,7 +30,8 @@
     "serve": {
       "executor": "@nx/js:node",
       "options": {
-        "buildTarget": "api:build"
+        "buildTarget": "api:build",
+        "watch": true
       },
       "configurations": {
         "production": {
