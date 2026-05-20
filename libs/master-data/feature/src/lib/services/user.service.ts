@@ -25,15 +25,35 @@ export class UserService {
   constructor(private readonly userRepository: UserRepository) {}
 
   /**
-   * Create a new User with hashed password.
-   * @throws ConflictException if username or email already exists.
+   * Create or update a User (upsert by username).
+   * If a user with the same username exists, updates their details.
+   * If not, creates a new user with hashed password.
    */
   async create(dto: CreateUserDto): Promise<UserWithRoles> {
     const existingByUsername = await this.userRepository.findByUsername(dto.username);
+
     if (existingByUsername) {
-      throw new ConflictException(`User with username '${dto.username}' already exists`);
+      // Upsert: update existing user
+      const updateData: Record<string, unknown> = {};
+      if (dto.fullName !== undefined) updateData['displayName'] = dto.fullName;
+      if (dto.email !== undefined) updateData['email'] = dto.email;
+      if (dto.isActive !== undefined) updateData['isActive'] = dto.isActive;
+      if (dto.password) {
+        updateData['passwordHash'] = await bcrypt.hash(dto.password, BCRYPT_ROUNDS);
+      }
+
+      // Check email uniqueness if being changed to a different user's email
+      if (dto.email && dto.email !== existingByUsername.email) {
+        const existingByEmail = await this.userRepository.findByEmail(dto.email);
+        if (existingByEmail && existingByEmail.id !== existingByUsername.id) {
+          throw new ConflictException(`User with email '${dto.email}' already exists`);
+        }
+      }
+
+      return this.userRepository.update(existingByUsername.id, updateData);
     }
 
+    // Check email uniqueness for new user
     if (dto.email) {
       const existingByEmail = await this.userRepository.findByEmail(dto.email);
       if (existingByEmail) {
@@ -47,7 +67,7 @@ export class UserService {
       username: dto.username,
       passwordHash,
       displayName: dto.fullName,
-      email: dto.email ?? '',
+      email: dto.email || null,
       isActive: dto.isActive ?? true,
     });
   }

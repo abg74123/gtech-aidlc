@@ -39,10 +39,10 @@ export class UserController {
 
   @Post()
   @HttpCode(HttpStatus.CREATED)
-  @ApiOperation({ summary: 'Create a new user' })
-  @ApiResponse({ status: 201, description: 'User created successfully' })
+  @ApiOperation({ summary: 'Create or update a user (upsert by username)' })
+  @ApiResponse({ status: 201, description: 'User created or updated successfully' })
   @ApiResponse({ status: 400, description: 'Validation error' })
-  @ApiResponse({ status: 409, description: 'Username or email already exists' })
+  @ApiResponse({ status: 409, description: 'Email already belongs to another user' })
   async create(@Body() dto: CreateUserDto) {
     return this.userService.create(dto);
   }

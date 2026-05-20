@@ -96,11 +96,19 @@ describe('UserService', () => {
       expect(result).toEqual(mockUserWithRoles);
     });
 
-    it('should throw ConflictException if username already exists', async () => {
+    it('should update existing user if username already exists (upsert)', async () => {
       repository.findByUsername.mockResolvedValue(mockUserWithRoles as any);
+      repository.update.mockResolvedValue(mockUserWithRoles);
+      (bcrypt.hash as jest.Mock).mockResolvedValue('$2b$10$newhashedpassword');
 
-      await expect(service.create(dto)).rejects.toThrow(ConflictException);
+      const result = await service.create(dto);
+
+      expect(repository.update).toHaveBeenCalledWith(
+        mockUserWithRoles.id,
+        expect.objectContaining({ displayName: 'สมชาย ใจดี' }),
+      );
       expect(repository.create).not.toHaveBeenCalled();
+      expect(result).toEqual(mockUserWithRoles);
     });
 
     it('should throw ConflictException if email already exists', async () => {
