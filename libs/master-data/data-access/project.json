@@ -3,5 +3,16 @@
   "sourceRoot": "libs/master-data/data-access/src",
   "projectType": "library",
   "tags": ["scope:master-data", "type:data-access"],
-  "targets": {}
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/master-data-data-access",
+        "tsConfig": "libs/master-data/data-access/tsconfig.lib.json",
+        "main": "libs/master-data/data-access/src/index.ts",
+        "assets": []
+      }
+    }
+  }
 }
