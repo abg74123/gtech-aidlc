@@ -10,7 +10,7 @@ datasource db {
   schemas  = ["master_data", "transactions", "warehouse", "reports"]
 }
 
-// ─── Enums ───────────────────────────────────────────────────────────────────
+// ─── Enums (master_data) ─────────────────────────────────────────────────────
 
 enum Role {
   CASHIER
@@ -23,7 +23,32 @@ enum Role {
   @@schema("master_data")
 }
 
-// ─── Models ──────────────────────────────────────────────────────────────────
+// ─── Enums (transactions) ────────────────────────────────────────────────────
+
+enum JOStatus {
+  OPEN
+  IN_PROGRESS
+  DONE
+
+  @@schema("transactions")
+}
+
+enum ApArStatus {
+  OPEN
+  PARTIAL
+  CLOSED
+
+  @@schema("transactions")
+}
+
+enum ClearingStatus {
+  OPEN
+  CLOSED
+
+  @@schema("transactions")
+}
+
+// ─── Models (master_data) ────────────────────────────────────────────────────
 
 // ── User & Auth ──────────────────────────────────────────────────────────────
 
