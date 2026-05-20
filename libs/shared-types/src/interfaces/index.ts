@@ -13,3 +13,8 @@ export type {
   PeriodInfo,
 } from './period-service.interface';
 export { PeriodStatus } from './period-service.interface';
+export type {
+  IRefChainService,
+  RefField as IRefField,
+  RefChainViolation,
+} from './ref-chain-service.interface';

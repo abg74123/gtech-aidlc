@@ -91,35 +91,54 @@
 **Artifacts**: autoflow-foundation/tasks.md, autoflow-foundation/decisions-tasks.md
 **Outcome**: 18 tasks across 8 phases, 4 execution waves (3 parallel waves). Component-first strategy, bottom-up. Coverage: 7 components, 3 entities, 4 endpoints. All design elements covered.
 
-### [2026-05-19T10:00:00Z] Design (Warehouse): Decision Gate
+### [2025-05-19T10:00:00Z] Design: decision-gate
 
 **Phase**: design
 **Action**: decision-gate
-**Artifacts**: autoflow-warehouse/decisions-design.md
-**Outcome**: 8 decisions — DB flag freeze, single TX transfer, unlimited approval threshold, local file storage, interface+mock strategy, 5-state count lifecycle, Angular Material, PBT with 9 properties
+**Unit**: master-data
+**Artifacts**: .aidlc/workflow/autoflow-master-data/decisions-design.md
+**Outcome**: 12 questions — 9 answered by user (D3-6,7,8 auto-filled with recommended). All passed validation, no conflicts detected.
 
-### [2026-05-19T10:05:00Z] Design (Warehouse): Generation
+### [2025-05-19T10:01:00Z] Design: generation
 
 **Phase**: design
 **Action**: generation
-**Artifacts**: autoflow-warehouse/design.md
-**Outcome**: Warehouse unit design — 5 components (StockCountService, StockTransferService, WriteOffService, WarehouseController, WarehouseUIModule), 6 entities, 14 endpoints, 9 PBT properties, compact format, self-contained with mock services
+**Unit**: master-data
+**Artifacts**: .kiro/specs/autoflow-master-data/design.md (compact format)
+**Outcome**: 9 components, 10 entities, 28 endpoints, 8 correctness properties, compact format. Self-contained unit with mock data for standalone dev.
 
-### [2026-05-19T10:10:00Z] Tasks (Warehouse): Decision Gate
+### [2025-05-19T10:20:00Z] Tasks: decision-gate
 
 **Phase**: tasks
 **Action**: decision-gate
-**Artifacts**: autoflow-warehouse/decisions-tasks.md
-**Outcome**: 6 decisions — vertical slice strategy, test-after, mock+data first priority, full test pyramid (unit+integration+PBT), standard granularity (1-2d), frontend after backend
+**Unit**: master-data
+**Artifacts**: .aidlc/workflow/autoflow-master-data/decisions-tasks.md
+**Outcome**: 8 questions — 7 answered by user (D4-4 auto-filled). Vertical slice, test-after, core-first, unit-only tests, standard granularity, incremental schema, backend-first.
 
-### [2026-05-19T10:15:00Z] Tasks (Warehouse): Generation
+### [2025-05-19T10:30:00Z] Tasks: generation
 
 **Phase**: tasks
 **Action**: generation
 **Artifacts**: autoflow-warehouse/tasks.md
 **Outcome**: 22 tasks across 6 phases, 4 execution waves (Wave 2 parallel: Stock Count + Transfer + Write-off). Coverage: 5 components, 6 entities, 14 endpoints, 9 PBT properties. Vertical slice strategy with shared foundation first.
 
-### [2026-05-19T10:20:00Z] Tasks (Warehouse): Approval
+### [2025-05-19T10:30:00Z] Tasks: generation
+
+**Phase**: tasks
+**Action**: generation
+**Unit**: master-data
+**Artifacts**: .kiro/specs/autoflow-master-data/tasks.md
+**Outcome**: 35 tasks across 9 phases, 6 execution waves (3 parallel waves: W2, W3, W5). Vertical slice strategy, core engine first. Full coverage: 7 stories, 9 components, 10 entities, 28 endpoints, 8 PBT properties.
+
+### [2025-05-19T10:35:00Z] Tasks: approval
+
+**Phase**: tasks
+**Action**: approval
+**Unit**: master-data
+**Artifacts**: .kiro/specs/autoflow-master-data/tasks.md
+**Outcome**: Tasks approved. 35 tasks, 9 phases, 6 waves. Ready for implementation.
+
+### [2025-05-19T10:40:00Z] Tasks (Warehouse): Approval
 
 **Phase**: tasks
 **Action**: approval
