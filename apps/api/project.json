@@ -8,7 +8,9 @@
     "shared-prisma",
     "shared-auth",
     "shared-errors",
-    "warehouse-feature"
+    "warehouse-feature",
+    "transactions-feature",
+    "transactions-data-access"
   ],
   "targets": {
     "build": {
