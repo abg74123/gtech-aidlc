@@ -1,0 +1,18 @@
+{
+  "name": "reports",
+  "sourceRoot": "libs/reports/src",
+  "projectType": "library",
+  "tags": ["scope:reports", "type:feature"],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/reports",
+        "tsConfig": "libs/reports/tsconfig.lib.json",
+        "main": "libs/reports/src/index.ts",
+        "assets": []
+      }
+    }
+  }
+}

@@ -172,6 +172,30 @@ model RefreshToken {
 
 // ── Role Table (normalized role metadata) ────────────────────────────────────
 
+// ─── Reports Schema ──────────────────────────────────────────────────────────
+
+model AlertLog {
+  id           String   @id @default(uuid()) @db.Uuid
+  alertCode    String   @map("alert_code")
+  alertMessage String   @map("alert_message")
+  txType       String   @map("tx_type")
+  txData       Json     @map("tx_data")
+  itemId       String?  @map("item_id")
+  warehouseId  String?  @map("warehouse_id")
+  period       String?
+  userId       String   @map("user_id")
+  createdAt    DateTime @default(now()) @map("created_at")
+
+  @@index([alertCode, createdAt], name: "idx_alert_log_code_created")
+  @@index([userId], name: "idx_alert_log_user")
+  @@index([txType], name: "idx_alert_log_tx_type")
+  @@index([createdAt], name: "idx_alert_log_created")
+  @@map("alert_log")
+  @@schema("reports")
+}
+
+// ─── Models (transactions) ───────────────────────────────────────────────────
+
 model RoleRecord {
   id          String  @id @default(uuid()) @db.Uuid
   name        String  @unique @db.VarChar(20)

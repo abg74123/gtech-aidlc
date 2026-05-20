@@ -36,7 +36,11 @@
       "@autoflow/warehouse-ui": ["libs/warehouse/ui/src/index.ts"],
       "@autoflow/master-data-data-access": ["libs/master-data/data-access/src/index.ts"],
       "@autoflow/master-data-feature": ["libs/master-data/feature/src/index.ts"],
-      "@autoflow/master-data-ui": ["libs/master-data/ui/src/index.ts"]
+      "@autoflow/master-data-ui": ["libs/master-data/ui/src/index.ts"],
+      "@autoflow/reports": ["libs/reports/src/index.ts"],
+      "@autoflow/transactions-data-access": ["libs/transactions/data-access/src/index.ts"],
+      "@autoflow/transactions-feature": ["libs/transactions/feature/src/index.ts"],
+      "@autoflow/transactions-ui": ["libs/transactions/ui/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

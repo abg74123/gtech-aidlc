@@ -4,6 +4,8 @@ import { PrismaModule } from '@autoflow/shared-prisma';
 import { AuthModule } from '@autoflow/shared-auth';
 import { WarehouseModule } from '@autoflow/warehouse-feature';
 import { MasterDataModule } from '@autoflow/master-data-feature';
+import { ReportsModule } from '@autoflow/reports';
+import { TransactionsModule } from '@autoflow/transactions-feature';
 import { AppController } from './app.controller';
 import { ApiAuthModule } from './auth/auth.module';
 
@@ -18,6 +20,8 @@ import { ApiAuthModule } from './auth/auth.module';
     ApiAuthModule,
     WarehouseModule,
     MasterDataModule,
+    ReportsModule,
+    TransactionsModule,
   ],
   controllers: [AppController],
 })

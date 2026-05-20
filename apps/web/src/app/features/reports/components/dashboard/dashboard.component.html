@@ -1,0 +1,103 @@
+<!-- Loading State -->
+@if (loading()) {
+  <div class="dashboard-loading">
+    <p>กำลังโหลดข้อมูล...</p>
+  </div>
+}
+
+<!-- Error State -->
+@if (error() && !loading()) {
+  <div class="dashboard-error">
+    <p class="error-message">{{ error() }}</p>
+    <button class="retry-btn" (click)="loadDashboard()">ลองใหม่</button>
+  </div>
+}
+
+<!-- Dashboard Content -->
+@if (dashboard(); as data) {
+  @if (!loading() && !error()) {
+    <div class="dashboard">
+      <h2 class="dashboard-title">Dashboard</h2>
+
+      <!-- Summary Cards -->
+      <section class="summary-cards">
+        <div class="card">
+          <span class="card-label">แจ้งเตือนทั้งหมด</span>
+          <span class="card-value">{{ data.totalAlerts | number }}</span>
+        </div>
+        <div class="card">
+          <span class="card-label">มูลค่าสต็อก (THB)</span>
+          <span class="card-value">{{ data.stockValue | number:'1.2-2' }}</span>
+        </div>
+        <div class="card">
+          <span class="card-label">AP รวม (THB)</span>
+          <span class="card-value">{{ data.totalAP | number:'1.2-2' }}</span>
+        </div>
+        <div class="card">
+          <span class="card-label">AR รวม (THB)</span>
+          <span class="card-value">{{ data.totalAR | number:'1.2-2' }}</span>
+        </div>
+      </section>
+
+      <!-- Alerts by Code Breakdown -->
+      <section class="alerts-breakdown">
+        <h3>แจ้งเตือนแยกตามรหัส</h3>
+        @if (alertsByCodeEntries().length === 0) {
+          <div class="breakdown-empty">
+            <p>ไม่มีข้อมูลแจ้งเตือน</p>
+          </div>
+        } @else {
+          <table class="breakdown-table">
+            <thead>
+              <tr>
+                <th>รหัสแจ้งเตือน</th>
+                <th>จำนวน</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (entry of alertsByCodeEntries(); track entry.code) {
+                <tr>
+                  <td>{{ entry.code }}</td>
+                  <td>{{ entry.count | number }}</td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        }
+      </section>
+
+      <!-- Recent Alerts -->
+      <section class="recent-alerts">
+        <h3>แจ้งเตือนล่าสุด (5 รายการ)</h3>
+        @if (data.recentAlerts.length === 0) {
+          <div class="recent-empty">
+            <p>ไม่มีรายการแจ้งเตือนล่าสุด</p>
+          </div>
+        } @else {
+          <table class="recent-table">
+            <thead>
+              <tr>
+                <th>วันที่</th>
+                <th>รหัส</th>
+                <th>ข้อความ</th>
+                <th>ประเภท TX</th>
+                <th>ผู้ใช้</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (alert of data.recentAlerts; track alert.id) {
+                <tr>
+                  <td>{{ alert.createdAt | date:'short' }}</td>
+                  <td>{{ alert.alertCode }}</td>
+                  <td>{{ alert.alertMessage }}</td>
+                  <td>{{ alert.txType }}</td>
+                  <td>{{ alert.userId }}</td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        }
+      </section>
+    </div>
+  }
+}

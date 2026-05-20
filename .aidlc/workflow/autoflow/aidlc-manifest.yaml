@@ -152,8 +152,8 @@ units:
     decisions: {}
   - name: "reports"
     displayName: "รายงาน (Reports & Error Alerts)"
-    status: "not-started"
-    phase: null
+    status: "in-progress"
+    phase: "design"
     completedPhases: []
     implementationMode: null
     implementation:
@@ -161,5 +161,19 @@ units:
       completedTasks: 0
       currentTask: null
       currentWave: null
-    artifacts: {}
-    decisions: {}
+    artifacts:
+      design:
+        status: "draft"
+        timestamp: "2025-05-19T10:00:00Z"
+        files: [design.md]
+    decisions:
+      design:
+        alert-architecture: "NestJS Guard — centralized rule engine"
+        rule-configuration: "Hardcoded in service"
+        error-logging: "Dedicated alert_log table in reports schema"
+        report-data-access: "Cross-schema Prisma queries"
+        report-performance: "Server-side pagination + filtering"
+        frontend-ui: "Angular Material CDK Table"
+        report-export: "No export in MVP"
+        mockup-strategy: "In-memory mock services implementing shared interfaces"
+        pbt: "Yes — PBT for alert validation rules"

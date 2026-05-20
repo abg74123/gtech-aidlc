@@ -144,3 +144,27 @@
 **Action**: approval
 **Artifacts**: autoflow-warehouse/tasks.md
 **Outcome**: 22 tasks approved. Ready for implementation.
+
+### [2025-05-19T10:00:00Z] Design: Decision Gate
+
+**Phase**: design
+**Action**: decision-gate
+**Unit**: reports
+**Artifacts**: .aidlc/workflow/autoflow-reports/decisions-design.md
+**Outcome**: 9 decisions — all recommended options selected. Alert architecture (Guard), hardcoded rules, alert_log table, cross-schema queries, pagination, Angular Material, no export, mock services, PBT enabled.
+
+### [2025-05-19T10:01:00Z] Design: Validation
+
+**Phase**: design
+**Action**: validation
+**Unit**: reports
+**Artifacts**: .aidlc/workflow/autoflow-reports/decisions-design.md
+**Outcome**: No conflicts detected. All decisions compatible with foundation stack (NestJS + Prisma + Angular + PostgreSQL).
+
+### [2025-05-19T10:02:00Z] Design: Generation
+
+**Phase**: design
+**Action**: generation
+**Unit**: reports
+**Artifacts**: .kiro/specs/autoflow-reports/design.md
+**Outcome**: Compact design — 5 components, 2 entities (1 table + 2 views), 7 endpoints, 5 PBT properties. Single design.md file (≤10 stories).
