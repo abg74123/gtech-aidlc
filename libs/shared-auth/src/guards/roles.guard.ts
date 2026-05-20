@@ -32,6 +32,11 @@ export class RolesGuard implements CanActivate {
       return false;
     }
 
+    // ADMIN role has unrestricted access to all endpoints
+    if (user.roles.includes(Role.ADMIN)) {
+      return true;
+    }
+
     return requiredRoles.some((role) => user.roles.includes(role));
   }
 }

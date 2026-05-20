@@ -22,7 +22,7 @@ import { TransferQueryDto } from '../dto/transfer-query.dto';
 
 @ApiTags('warehouse / stock-transfer')
 @ApiBearerAuth()
-@Controller('api/v1/warehouse/transfers')
+@Controller('warehouse/transfers')
 @UseGuards(JwtAuthGuard, RolesGuard)
 export class TransferController {
   constructor(private readonly stockTransferService: StockTransferService) {}

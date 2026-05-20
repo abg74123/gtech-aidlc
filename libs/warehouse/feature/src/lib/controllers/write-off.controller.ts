@@ -29,7 +29,7 @@ import { WriteOffQueryDto } from '../dto/write-off-query.dto';
 
 @ApiTags('warehouse / write-off')
 @ApiBearerAuth()
-@Controller('api/v1/warehouse/write-offs')
+@Controller('warehouse/write-offs')
 @UseGuards(JwtAuthGuard, RolesGuard)
 export class WriteOffController {
   constructor(private readonly writeOffService: WriteOffService) {}

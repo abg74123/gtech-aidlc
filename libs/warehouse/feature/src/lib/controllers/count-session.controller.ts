@@ -26,7 +26,7 @@ import { CountSessionQueryDto } from '../dto/count-session-query.dto';
 
 @ApiTags('warehouse / stock-count')
 @ApiBearerAuth()
-@Controller('api/v1/warehouse/count-sessions')
+@Controller('warehouse/count-sessions')
 @UseGuards(JwtAuthGuard, RolesGuard)
 export class CountSessionController {
   constructor(private readonly stockCountService: StockCountService) {}

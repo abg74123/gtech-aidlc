@@ -8,7 +8,7 @@
  */
 import { Test, TestingModule } from '@nestjs/testing';
 import { INestApplication, ValidationPipe } from '@nestjs/common';
-import * as request from 'supertest';
+import request from 'supertest';
 import { CountSessionController } from '../lib/controllers/count-session.controller';
 import { TransferController } from '../lib/controllers/transfer.controller';
 import { WriteOffController } from '../lib/controllers/write-off.controller';
@@ -199,6 +199,7 @@ describe('Warehouse Module Integration — Full E2E Flow', () => {
       .compile();
 
     app = moduleFixture.createNestApplication();
+    app.setGlobalPrefix('api/v1');
     app.useGlobalPipes(new ValidationPipe({ transform: true, whitelist: true }));
     await app.init();
   });

@@ -1,9 +1,11 @@
 import { Module } from '@nestjs/common';
 import { WarehouseDataAccessModule } from '@autoflow/warehouse-data-access';
+import { AuthModule } from '@autoflow/shared-auth';
 import { StockCountService } from './services/stock-count.service';
 import { StockTransferService } from './services/stock-transfer.service';
 import { WriteOffService } from './services/write-off.service';
 import { CountSessionController } from './controllers/count-session.controller';
+import { MasterDataController } from './controllers/master-data.controller';
 import { TransferController } from './controllers/transfer.controller';
 import { WriteOffController } from './controllers/write-off.controller';
 import { MockTxLogService } from './mocks/mock-tx-log.service';
@@ -41,8 +43,8 @@ import { WAREHOUSE_DI_TOKENS } from './mocks/di-tokens';
  * @see design.md — Architecture section for full module diagram
  */
 @Module({
-  imports: [WarehouseDataAccessModule],
-  controllers: [CountSessionController, TransferController, WriteOffController],
+  imports: [WarehouseDataAccessModule, AuthModule],
+  controllers: [CountSessionController, MasterDataController, TransferController, WriteOffController],
   providers: [
     // Domain services
     StockCountService,

@@ -4,7 +4,7 @@
  */
 import { Test, TestingModule } from '@nestjs/testing';
 import { INestApplication, ValidationPipe } from '@nestjs/common';
-import * as request from 'supertest';
+import request from 'supertest';
 import { CountSessionController } from './count-session.controller';
 import { StockCountService } from '../services/stock-count.service';
 import { CountSessionRepository } from '@autoflow/warehouse-data-access';
@@ -121,6 +121,7 @@ describe('CountSessionController (Integration)', () => {
       .compile();
 
     app = moduleFixture.createNestApplication();
+    app.setGlobalPrefix('api/v1');
     app.useGlobalPipes(new ValidationPipe({ transform: true, whitelist: true }));
     await app.init();
   });
