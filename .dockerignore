@@ -1,0 +1,17 @@
+node_modules
+dist
+.angular
+.nx
+.git
+.github
+.aidlc
+.kiro
+*.md
+!README.md
+.env
+.env.local
+coverage
+tmp
+e2e-results
+infra/terraform/.terraform
+infra/terraform/*.tfstate*

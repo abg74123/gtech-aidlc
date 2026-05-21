@@ -1,0 +1,15 @@
+node_modules
+dist
+.angular
+.nx
+.git
+.github
+.aidlc
+.kiro
+*.md
+.env
+.env.*
+!.env.example
+coverage
+tmp
+e2e-results
